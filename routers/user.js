@@ -9,4 +9,10 @@ const router = express.Router();
 
 //------------这里写接口----------
 
+
+//获取用户个人信息
+router.get('/userinfo', async(req, res) => {
+    console.log(req.user);
+
+})
 module.exports = router;
