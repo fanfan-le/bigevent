@@ -35,8 +35,6 @@ router.post('/login', async(req, res) => {
         req.body.username
     ];
     let r = await db('select * from user where password=? and username=?', arr);
-    console.log(r);
-
     if (r && r.length > 0) {
         res.send({
             status: 0,

@@ -24,6 +24,6 @@ app.use('/my', require(path.join(__dirname, 'routers', 'user')));
 //配置处理错误的中间件
 app.use(function(err, req, res, next) {
     if (err.name === 'UnauthorizedError') {
-        res.status(401).send('invalid token...');
+        res.status(401).send({ status: 1, message: '身份认证失败' });
     }
 });
