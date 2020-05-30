@@ -4,7 +4,7 @@
 //3.把接口挂载在路由对象上
 //4.导出路由对象
 const path = require('path');
-const db = require('../utils/db');
+const db = require(path.join(__dirname, '../utils/db.js'));
 const utility = require('utility');
 const express = require('express');
 const router = express.Router();
@@ -69,6 +69,8 @@ router.post('/updatepwd', async(req, res) => {
 //更换用户头像
 router.post('/update/avatar', async(req, res) => {
     let r = await db('update user set user_pic=? where id=?', [req.body.avatar, req.user.id]);
+    console.log(typeof req.body.avatar);
+
     if (r && r.affectedRows > 0) {
         res.send({ status: 0, message: '更换头像成功' })
     } else {

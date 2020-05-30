@@ -33,7 +33,7 @@ router.post('/addcates', async(req, res) => {
 
 
 //根据文章id删除文章
-router.post('/deletecate/:id', async(req, res) => {
+router.get('/deletecate/:id', async(req, res) => {
     // console.log(req.params.id);
     let r = await db('delete from category where id=?', req.params.id)
     if (r && r.affectedRows > 0) {
